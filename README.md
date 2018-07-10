@@ -1,3 +1,4 @@
+[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/1242)
 # Singularity Recipe for QIIME1.9.1 For the University of Hawaii HPC system
 
 This repo contains recipe run [qiime1.9.1](https://qiime.org) within a
