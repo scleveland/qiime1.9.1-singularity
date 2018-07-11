@@ -1,7 +1,5 @@
-Bootstrap: yum
-OSVersion: 7
-MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
-Include: yum
+Bootstrap: shub
+From: scleveland/centos7-base-singularity
 
 %environment
 PATH=/opt/conda/envs/qiime1.9.1/bin:/opt/conda/bin:$PATH
@@ -18,12 +16,8 @@ conda install -y conda
 conda update -y conda
 mkdir /lus
 mkdir /lus/scratch
-
-conda env create -n qiime1.9.1
+conda create -n qiime1.9.1 python=2.7 qiime matplotlib=1.4.3 mock nose numpy -c bioconda -y
 source activate qiime1.9.1
-pip install numpy
-pip install qiime==1.9.1
-pip install itertools
 pip install cogent
 
 %runscript
