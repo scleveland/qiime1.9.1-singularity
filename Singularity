@@ -16,10 +16,11 @@ conda install -y conda
 conda update -y conda
 mkdir /lus
 mkdir /lus/scratch
-conda create -n qiime1.9.1 python=2.7 qiime matplotlib=1.4.3 mock nose -c bioconda -y
+conda create -n qiime1.9.1 python=2.7 qiime matplotlib=1.4.3 opencv mock nose -c bioconda -y
 source activate qiime1.9.1
 pip install numpy
 pip install cogent
+pip install opencv-python
 
 %runscript
 exec qiime "$@"
