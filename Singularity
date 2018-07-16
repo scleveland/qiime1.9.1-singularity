@@ -1,14 +1,16 @@
-Bootstrap: shub
-From: scleveland/centos7-base-singularity
+#!/bin/bash/
+Bootstrap: debootstrap
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+OSVersion: xenial
 
 %environment
 PATH=/opt/conda/envs/qiime1.9.1/bin:/opt/conda/bin:$PATH
 export PATH
 
 %post
-yum update -y
-yum  install -y @"Development Tools"
-yum install -y git curl which python3 python3-devel vim htop wget tar bzip2 gzip lz4 lzma mesa-libGL mesa-libGLU
+apt-get update -y
+apt-get install -y build-essential libsm6 libxext6 libgtk2.0-dev
+apt-get install -y git curl python3 vim wget tar bzip2 gzip lzma
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda
 export PATH=/opt/conda/bin:$PATH
@@ -16,11 +18,7 @@ conda install -y conda
 conda update -y conda
 mkdir /lus
 mkdir /lus/scratch
-conda create -n qiime1.9.1 python=2.7 qiime matplotlib=1.4.3 opencv mock nose -c bioconda -y
-source activate qiime1.9.1
-pip install numpy
-pip install cogent
-pip install opencv-python
+conda create -n qiime1.9.1 python=2.7 qiime matplotlib=1.4.3  mock nose -c bioconda -y
 
 %runscript
-exec qiime "$@"
+source activate qiime1.9.1
