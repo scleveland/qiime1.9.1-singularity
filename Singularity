@@ -1,7 +1,6 @@
 #!/bin/bash/
-Bootstrap: debootstrap
-MirrorURL: http://us.archive.ubuntu.com/ubuntu/
-OSVersion: bioinc
+BootStrap:docker
+From: ubuntu:18.04
 
 %environment
 PATH=/opt/conda/envs/qiime1.9.1/bin:/opt/conda/bin:$PATH
