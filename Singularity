@@ -1,7 +1,7 @@
 #!/bin/bash/
 Bootstrap: debootstrap
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
-OSVersion: xenial
+OSVersion: bioinc
 
 %environment
 PATH=/opt/conda/envs/qiime1.9.1/bin:/opt/conda/bin:$PATH
@@ -18,7 +18,7 @@ conda install -y conda
 conda update -y conda
 mkdir /lus
 mkdir /lus/scratch
-conda create -n qiime1.9.1 python=2.7  qiime mock nose -c bioconda -y
-source activate qiim1.9.1 && conda install qiime matplotlib=1.4.3
+conda create -n qiime1.9.1 python=2.7  qiime matplotlib=1.4.3 mock nose -c bioconda -y
+
 %runscript
 source activate qiime1.9.1
